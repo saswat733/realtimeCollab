@@ -1,7 +1,10 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 
-export default clerkMiddleware({});
+export default clerkMiddleware({
+  // Specify your Clerk configuration here
+});
 
 export const config = {
-  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+  // Allow catch-all routes for <OrganizationProfile/>
+  matcher: ["/((?!.*\\..*|_next).*)", "/[[...rest]]", "/(api|trpc)(.*)"],
 };
