@@ -8,6 +8,7 @@ import {
   SignedOut,
   UserButton
 } from '@clerk/nextjs'
+import { ConvexClientProvider } from "@/providers/convex-client-provider";
 // import { ConvexClientProvider } from "@/providers/convex-client-provider";
 // import { AuthLoading,Authenticated } from "convex/react";
 // import Loading from '@/components/loading/loading'
@@ -25,9 +26,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <ClerkProvider>
+      // <ClerkProvider>
     <html lang="en">
       <body className={inter.className}>
+        <ConvexClientProvider>
       <SignedOut> 
         <SignInButton />
         </SignedOut> 
@@ -40,8 +42,9 @@ export default function RootLayout({
         {/* <AuthLoading> */}
           {/* <Loading/> */}
         {/* </AuthLoading> */}
+        </ConvexClientProvider>
         </body>
     </html>
-        </ClerkProvider>
+        // </ClerkProvider>
   );
 }
