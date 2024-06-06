@@ -12,7 +12,8 @@ import { ConvexClientProvider } from "@/providers/convex-client-provider";
 // import { ConvexClientProvider } from "@/providers/convex-client-provider";
 // import { AuthLoading,Authenticated } from "convex/react";
 // import Loading from '@/components/loading/loading'
-
+import { Toaster } from "@/components/ui/sonner";
+import { ModalProvider } from "@/providers/modal-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -30,6 +31,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ConvexClientProvider>
+          <Toaster />
+          <ModalProvider/>
       <SignedOut> 
         <SignInButton />
         </SignedOut> 
@@ -40,7 +43,7 @@ export default function RootLayout({
           {children}
         {/* </Authenticated> */}
         {/* <AuthLoading> */}
-          {/* <Loading/> */}
+          {/* <Loading/cd > */}
         {/* </AuthLoading> */}
         </ConvexClientProvider>
         </body>

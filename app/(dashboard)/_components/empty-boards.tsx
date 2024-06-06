@@ -1,9 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 import { useOrganization } from '@clerk/nextjs'
-// import { toast } from 'sonner'
+import { toast } from 'sonner'
 
 import { Button } from '@/components/ui/button'
 
@@ -21,7 +21,10 @@ export const EmptyBoards = () => {
     mutate({
       orgId: organization.id,
       title: 'Untitled',
-    })
+    }).then((id)=>{
+      toast.success('Board created successfully');
+      router.push(`/board/${id}`)
+    }).catch((error)=>{ toast.error(error.message) })
       
   }
 
