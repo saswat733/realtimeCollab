@@ -30,7 +30,7 @@ interface BoardCardProps{
 export const BoardCard=({id,title,authorId,authorName,createdAt,imageUrl,orgId,isFavorite}:BoardCardProps)=>{
     const {userId} = useAuth()
     const {mutate:onFavorite,pending:pendingFavorite}=useApiMutation(api.board.favorite);
-    const {mutate:onUnFavorite,pending:pendingUnFavorite}=useApiMutation(api.board.unFavorite);
+    const {mutate:onUnFavorite,pending:pendingUnFavorite}=useApiMutation(api.board.unfavorite);
     const authorLabel = userId === authorId ? "You" : authorName;
     const createdAtLabel = formatDistanceToNow(createdAt,{addSuffix:true});
         const toggleFavorite=()=>{
