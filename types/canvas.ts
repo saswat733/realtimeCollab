@@ -102,11 +102,7 @@ export type Color = {
       }
     | {
         mode: CanvasMode.Inserting
-        layerType:
-          | LayerType.Ellipse
-          | LayerType.Rectangle
-          | LayerType.Text
-          | LayerType.Note
+        layerType: LayerType.Ellipse | LayerType.Rectangle | LayerType.Text | LayerType.Note
       }
     | {
         mode: CanvasMode.Pencil
@@ -131,9 +127,4 @@ export type Color = {
     Pencil,
   }
   
-  export type Layer =
-    | RectangleLayer
-    | EllipseLayer
-    | PathLayer
-    | TextLayer
-    | NoteLayer
+  export type Layer =RectangleLayer| EllipseLayer| PathLayer| TextLayer| NoteLayer

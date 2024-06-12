@@ -16,7 +16,7 @@ interface ToolBarProps{
 export const ToolBar=({canRedo,canUndo,canvasState,redo,setCanvasState,undo}:ToolBarProps)=>{
     return (
         <div className="absolute top-[50%] -translate-y-[50%] left-2 flex flex-col gap-y-4">
-            <div className="bg-white rounded-md p-1.5 flex gap-y-1 flex-col items-center shadow-md"></div>
+            <div className="bg-white rounded-md p-1.5 flex gap-y-1 flex-col items-center shadow-lg">
             <ToolButton
             label="Select"
             icon={MousePointer2}
@@ -58,6 +58,7 @@ export const ToolBar=({canRedo,canUndo,canvasState,redo,setCanvasState,undo}:Too
             onClick={()=> setCanvasState({mode:CanvasMode.Pencil,})}
             isActive={canvasState.mode === CanvasMode.Pencil}
             />
+            </div>
 
             <div className="bg-white rounded-md p-1.5 flex flex-col items-center shadow-md">
                <ToolButton

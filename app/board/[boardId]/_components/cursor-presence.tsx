@@ -4,7 +4,7 @@ import { memo } from "react"
 import { useOthersConnectionIds } from "@/liveblocks.config"
 import { Cursor } from "./cursor";
 
-export const Cursors=()=>{
+const Cursors=()=>{
     const ids=useOthersConnectionIds();
     return (
         <>
@@ -23,7 +23,7 @@ export const Cursors=()=>{
 export const CursorPresence=memo(()=>{
     return (
         <>
-
+         <Cursors/>
         </>
     )
 })
