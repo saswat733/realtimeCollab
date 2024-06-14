@@ -2,7 +2,7 @@ import { createClient,LiveList,LiveMap,LiveObject } from "@liveblocks/client";
 import { createRoomContext, createLiveblocksContext } from "@liveblocks/react";
   import { Layer,Color } from "./types/canvas";
 const client = createClient({
-    throttle:16,
+    // throttle:16,
     authEndpoint:"/api/liveblocks-auth",
   });
 
