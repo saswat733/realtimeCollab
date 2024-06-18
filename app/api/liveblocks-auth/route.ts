@@ -7,9 +7,11 @@ import { api } from '@/convex/_generated/api'
 
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!)
 
+console.log("convex:",convex)
 const liveblocks = new Liveblocks({
-  secret: process.env.LIVEBLOCKS_SECRET!,
+  secret: process.env.LIVEBLOCKS_SECRET_KEY!,
 })
+
 
 export async function POST(request: Request) {
   const authorization = await auth()
@@ -20,10 +22,10 @@ export async function POST(request: Request) {
   }
 
 
-  // console.log("authInfo:",{
-  //   authorization,
-  //   user,
-  // })
+  console.log("authInfo:",{
+    authorization,
+    user,
+  })
 
   const { room } = await request.json()
   const board = await convex.query(api.board.get, { id: room })
