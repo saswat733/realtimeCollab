@@ -14,6 +14,8 @@ import { ConvexClientProvider } from "@/providers/convex-client-provider";
 // import Loading from '@/components/loading/loading'
 import { Toaster } from "@/components/ui/sonner";
 import { ModalProvider } from "@/providers/modal-provider";
+import { Suspense } from "react";
+import Loading from "@/components/loading/loading";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -28,8 +30,10 @@ export default function RootLayout({
 }>) {
   return (
       // <ClerkProvider>
+
     <html lang="en">
       <body className={inter.className}>
+        <Suspense fallback={<Loading/>}>
         <ConvexClientProvider>
           <Toaster />
           <ModalProvider/>
@@ -46,6 +50,7 @@ export default function RootLayout({
           {/* <Loading/cd > */}
         {/* </AuthLoading> */}
         </ConvexClientProvider>
+        </Suspense>
         </body>
     </html>
         // </ClerkProvider>

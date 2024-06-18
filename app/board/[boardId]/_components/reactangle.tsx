@@ -15,7 +15,7 @@ export const Rectangle = ({
   selectionColor,
 }: RectangleProps) => {
   const { x, y, width, height, fill } = layer
-
+  // console.log('arrive')
   return (
     <rect
       className="drop-shadow-md"

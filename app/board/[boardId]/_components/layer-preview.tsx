@@ -4,7 +4,11 @@ import { useStorage } from "@/liveblocks.config";
 import { LayerType } from "@/types/canvas";
 import { memo } from "react";
 import { Rectangle } from "./reactangle";
-
+import { Ellipse } from "./ellipse";
+import {Text} from "./text";
+import {Note} from "./note";
+import { Path } from "./path";
+import { colorToCss } from "@/lib/utils";
 interface LayerPreviewProps{
     id:string,
     onLayerPointerDown:(e:React.PointerEvent,layerId:string)=>void;
@@ -17,6 +21,8 @@ export const LayerPreview=memo(({id,onLayerPointerDown,selectionColor}:LayerPrev
     
     const layer=useStorage((root)=>root.layers.get(id));
 
+    // console.log("layer",layer)
+
     if(!layer){
         return null;
         console.log("problem")
@@ -24,6 +30,18 @@ export const LayerPreview=memo(({id,onLayerPointerDown,selectionColor}:LayerPrev
 
     
     switch (layer.type){
+        case LayerType.Path:
+            return (
+                <Path
+                key={id}
+                points={layer.points}
+                x={layer.x}
+                y={layer.y}
+                fill={layer.fill ? colorToCss(layer.fill): "#000"}
+                onPointerDown={(e)=>onLayerPointerDown(e,id)}
+                stroke={selectionColor}
+                />
+            )
         case LayerType.Rectangle:
             return (
                     <Rectangle
@@ -34,6 +52,38 @@ export const LayerPreview=memo(({id,onLayerPointerDown,selectionColor}:LayerPrev
                     />
         
             );
+        case LayerType.Ellipse:
+            return (
+                    <Ellipse
+                    id={id}
+                    layer={layer}
+                    onPointerDown={onLayerPointerDown}
+                    selectionColor={selectionColor}
+                    />
+        
+            );
+        case LayerType.Text:
+            console.log("text layer",layer)
+            return (
+                  <Text
+                    id={id}
+                    layer={layer}
+                    onPointerDown={onLayerPointerDown}
+                    selectionColor={selectionColor}
+                  />
+            );
+        case LayerType.Note:
+            console.log("text layer",layer)
+            return (
+                  <Note
+                    id={id}
+                    layer={layer}
+                    onPointerDown={onLayerPointerDown}
+                    selectionColor={selectionColor}
+                  />
+            );
+       
+      
 
         default:
             console.warn("unkown layer type.")
